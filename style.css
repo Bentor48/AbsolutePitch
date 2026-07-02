@@ -1,0 +1,706 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: rgba(255, 255, 255, 0.8);
+    --colorForText: rgba(255, 255, 255, 0.8);
+    --whiteForFocus: rgba(255, 255, 255, 0.600);
+    --black: rgb(0, 0, 0);
+    --blackForFocus: rgba(0, 0, 0, 0.800);
+    --forContinueBTN: rgba(0, 0, 0, 0.557);
+    --background: rgb(0, 15, 88);
+    --headerFontSize: 35px;
+}
+
+[data-theme="light"] {
+    --white: rgba(255, 255, 255, 0.8);
+    --colorForText: rgba(0, 0, 0, 0.883);
+    --whiteForFocus: rgba(94, 94, 94, 0.757);
+    --black: rgb(0, 0, 0);
+    --blackForFocus: rgb(217, 217, 217);
+    --forContinueBTN: rgba(214, 214, 214, 0.422);
+    --background: rgb(237, 237, 237);
+}
+
+[data-theme="light"] p,
+[data-theme="light"] h1,
+[data-theme="light"] button {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+}
+
+html, 
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 16px;
+    background: var(--background);
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+    color: var(--colorForText);
+}
+
+header {
+    margin-top: 2dvh;
+    height: 5dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#logo {
+    height: 5dvh;
+}
+
+/*Окно 1*/
+
+.fullWindow1 {
+    width: 100%;
+    min-height: 83dvh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*Кнопки настроки*/
+
+#settings {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3vw;
+    align-items: center;
+}
+
+.setBTN {
+    height: 6dvh;
+    width: 6dvh;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--black);
+    border: 1px solid var(--white);
+    color: var(--white);
+    font-size: 1.4rem;
+    align-items: center;
+    padding: 0;
+}
+
+
+#theme {
+    margin-right: 3vw;
+}
+
+.containerh1 {
+    font-size: clamp(1rem, 12vw, 5rem);
+    margin-top: 10%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.containerp {
+    font-size: clamp(0.5rem, 5vw, 2rem);
+    text-align: center;
+    margin: 0 5px 0 5px;
+}
+
+/*Стили чекбох*/
+
+#noteA-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: clamp(0.5rem, 5vw, 2rem);
+}
+
+#noteA {
+    width: 7dvh;
+    height: 7dvh;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: 2px solid var(--colorForText);
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+    position: relative;
+}
+
+#noteA:checked::after {
+    content: "";
+
+    position: absolute;
+
+    width: 60%;
+    height: 60%;
+
+    border-radius: 50%;
+
+    background-color: var(--colorForText);
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s;
+}
+
+#noteA:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#counter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: clamp(0.5rem, 5vw, 2rem);
+}
+
+
+
+/* Стили для ползунка */
+
+#counter {
+    appearance: none;
+    -webkit-appearance: none;
+    touch-action: none;
+
+    width: 22%;
+    height: 23%;
+
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Стили для трека ползунка */
+
+#counter::-webkit-slider-runnable-track {
+    border-radius: 5dvw;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+}
+
+#counter::-moz-range-track {
+    border-radius: 5dvw;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+}
+
+/* Стили для ползунка */
+
+#counter::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 5dvw;
+    height: 5dvw;
+
+    border-radius: 50%;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+
+    cursor: pointer;
+}
+
+#counter::-moz-range-thumb {
+    width: 5dvw;
+    height: 5dvw;
+    border-radius: 50%;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+
+    cursor: pointer;
+}
+
+.buttonForContine {
+    width: 80%;
+    height: 8dvh;
+    border-radius: 10px;
+    border: 2px solid var(--colorForText);
+    font-size: 3dvh;
+    cursor: pointer;
+    align-self: center;
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+    color: var(--colorForText);
+    margin-bottom: 5%;
+    background-color: var(--forContinueBTN);
+}
+
+/*Окно 2*/
+
+#window2ForTimer {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#svgForStart {
+    width: 80dvw;
+    height: 25dvh;
+    display: flex;
+    
+}
+
+#timer {
+    height: 20dvh;
+    font-size: 10dvh;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для окна с пианино */
+
+#window3ForPiano {
+    display: none;
+    justify-content: space-evenly;
+}
+
+#fortepiano {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.white-btn {
+    height: 8vh;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 10px;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 3vh;
+    position: relative;
+    z-index: 1;
+    border-radius: 0 10px 10px 0;
+}
+
+.black-btn {
+    height: 6vh;
+    width: 55%;
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    cursor: pointer;
+    text-align: center;
+    max-width: 60%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 0 10px 10px 0;
+}
+
+#si-flat {
+    top: 9%;
+}
+
+#sol-sharp {
+    top: 22.5%;
+}
+
+#fa-sharp {
+    bottom: 52%;
+}
+
+#mi-flat {
+    bottom: 23.5%;
+}
+
+#do-sharp {
+    bottom: 9%;
+}
+
+/*окно результата*/
+
+#window4ForResult {
+    display: none;
+    align-items: center;
+}
+
+#correctNote {
+    margin: 10dvh 5dvw 5dvh 5dvw;
+}
+
+#textForResult {
+    font-size: clamp(2rem, 7vw, 3rem);
+}
+
+/*футер*/
+
+footer {
+    margin-bottom: 2dvh;
+    text-align: center;
+    color: var(--colorForText);
+    font-size: clamp(0.2rem, 3vw, 3rem);
+    height: 5dvh;
+    border: none;
+    padding: 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2dvw;
+}
+
+.dot {
+    margin: 0 2dvw;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.github-link:hover {
+    opacity: 0.75;
+    transform: scale(1.1);
+}
+
+@media  (orientation: landscape) and (pointer: coarse) {
+    header {
+        margin-top: 1vw;
+        height: 3vw;
+    }
+
+    #logo {
+        height: 3vw;
+    }
+
+    .setBTN {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #window1ForStart {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3vh;
+    }
+
+    #settings {
+        grid-column: span 2;
+    }
+
+    #welcome-containerp {
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    .containerh1 {
+        grid-row: span 4;
+    }
+
+    #welcome-containerh1 {
+        font-size: clamp(1rem, 20vh, 30rem);
+    }
+
+    #welcome-containerp {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    #noteA {
+        width: 7vh;
+        height: 7vh;
+    }
+
+    #counter {
+        width: 15vw;
+        height: 10vh;
+        transform: none;
+        writing-mode: horizontal-tb;
+    }
+
+    #counter::-webkit-slider-thumb {
+        width: 5vh;
+        height: 5vh;
+    }
+
+    #counter::-moz-range-thumb {
+        width: 5vh;
+        height: 5vh;
+    }
+
+
+    #counter::-webkit-slider-runnable-track {
+        border-radius: 5vw;
+    }
+
+    #counter::-moz-range-track {
+        border-radius: 5vw;
+    }
+
+
+    #start-btn {
+        margin: 0 auto;
+        margin-left: 10%;
+    }
+
+    #noteALabel {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    #counter-label {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    .footer {
+        font-size: clamp(0.5rem, 3vh, 6rem);
+        margin-bottom: 1vh;
+    }
+
+    #svgGitHub {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    #fortepiano {
+        display: flex;
+        flex-direction: row-reverse;
+        align-self: center;
+        width: 80%;
+        height: 60vh
+    }
+
+    .white-btn{
+        height: 100%;
+        width: 14.28%;
+        padding: 0;
+        border-radius: 0 0 10px 10px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 3vh;
+    }
+
+    .black-btn {
+        height: 55%;
+        width: 12.28%;
+        top: auto;
+        bottom: auto;
+        border-radius: 0 0 10px 10px;
+    }
+
+    #si-flat {
+        top: 0;
+        right: 8.1%;
+    }
+
+    #sol-sharp {
+        top: 0;
+        right: 22%;
+    }
+
+    #fa-sharp {
+        top: 0;
+        right: 36.7%;
+    }
+
+    #mi-flat {
+        top: 0;
+        left: 22.5%;
+    }
+
+    #do-sharp {
+        top: 0;
+        left: 8.1%;
+    }
+
+    .buttonForContine {
+        margin: 0;
+        height: 10vh;
+        font-size: 3vh;
+        grid-column: span 2;
+    }
+
+    #window4ForResult {
+        display: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3vh;
+    }
+
+    #correctNote {
+        font-size: clamp(2rem, 5vw, 6rem);
+    }
+
+    #textForResult {
+        max-width: 55vh;
+        margin: 12vh auto 0 auto;
+        font-size: clamp(0.5rem, 5vw, 3.5rem);
+    } 
+
+    #restartBNT {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 1024px) { 
+    header {
+        margin-top: 1dvw;
+        height: 3dvw;
+    }
+
+    #logo {
+        height: 3dvw;
+    }
+
+    #window1ForStart {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3dvh;
+    }
+
+        #settings {
+        grid-column: span 2;
+    }
+
+    #welcome-containerp {
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }
+
+
+    #welcome-containerh1 {
+        font-size: clamp(1rem, 20dvh, 30rem);
+        grid-row: span 4;
+    }
+
+    #welcome-containerp {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    #counter::-webkit-slider-thumb {
+        width: 5dvh;
+        height: 5dvh;
+    }
+
+    #counter::-moz-range-thumb {
+        width: 5dvh;
+        height: 5dvh;
+    }
+
+    #counter {
+        width: 5dvw;
+        height: 20dvh;
+    }
+
+    #start-btn {
+        margin: 0;
+        margin-left: 10%;
+    }
+
+    #noteALabel {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    #counter-label {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    .footer {
+        font-size: clamp(0.5rem, 3dvh, 6rem);
+        margin-bottom: 1dvh;
+    }
+
+    #svgGitHub {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    #fortepiano {
+        display: flex;
+        flex-direction: row-reverse;
+        align-self: center;
+        width: 80%;
+        height: 60dvh
+    }
+
+    .white-btn{
+        height: 100%;
+        width: 14.28%;
+        padding: 0;
+        border-radius: 0 0 10px 10px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 3dvh;
+    }
+
+    .black-btn {
+        height: 55%;
+        width: 12.28%;
+        top: auto;
+        bottom: auto;
+        border-radius: 0 0 10px 10px;
+    }
+
+    #si-flat {
+        top: 0;
+        right: 8.1%;
+    }
+
+    #sol-sharp {
+        top: 0;
+        right: 22%;
+    }
+
+    #fa-sharp {
+        top: 0;
+        right: 36.7%;
+    }
+
+    #mi-flat {
+        top: 0;
+        left: 22.5%;
+    }
+
+    #do-sharp {
+        top: 0;
+        left: 8.1%;
+    }
+
+    .buttonForContine {
+        margin: 0;
+    }
+
+    #window4ForResult {
+        display: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3dvh;
+    }
+
+    #textForResult {
+        max-width: 55vh;
+        margin: 12vh auto 0 auto;
+        font-size: clamp(0.5rem, 5vw, 3.5rem);
+    } 
+
+    #restartBNT {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+}
