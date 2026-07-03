@@ -109,7 +109,7 @@ header a {
     font-size: clamp(1rem, 8dvw, 9rem);
 }
 
-.languageButton, .languageCloseButton{
+.languageButton {
     width: 90%;
     height: 8dvh;
     border-radius: 10px;

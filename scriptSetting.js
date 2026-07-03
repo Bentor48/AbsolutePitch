@@ -24,9 +24,8 @@ function addSettingForWindow() {
     <dialog id="languageDialog">
         <h2>Выберите язык</h2>
         <button class="languageButton" data-language="en">English</button>
-        <button class="languageButton" data-language="ua">Українська</button>
+        <button class="languageButton" data-language="uk">Українська</button>
         <button class="languageButton" data-language="ru">Русский</button>
-        <button class="languageCloseButton" id="closeDialog">Закрыть</button>
     </dialog>`
 };
 
@@ -60,26 +59,44 @@ themeBTN.addEventListener('click', () => {
 })
 
 // Выбор языка
+// Определить язык пользователя и найти запись в памяти
+window.languageUser = localStorage.getItem('language');
+const htmlElement = document.documentElement;
 
-let activeLanguage;
+if (!languageUser) {
+    const systemLanguage = navigator.language.toLowerCase();
+
+    if (systemLanguage.startsWith("ru")) {
+        languageUser = "ru";
+    } else if (systemLanguage.startsWith("uk")) {
+        languageUser = "uk";
+    } else {
+        languageUser = "en";
+    }
+} else {
+    htmlElement.lang = languageUser;
+}
 
 const languageBTN = document.getElementById('language');
 const dialog = document.getElementById("languageDialog");
-const closeLanguageBTN = document.getElementById('closeDialog');
 const languageButtons = document.querySelectorAll(".languageButton");
-const htmlElement = document.documentElement;
 
 languageButtons.forEach(button => {
     button.addEventListener("click", () => {
-        activeLanguage = button.dataset.language;
-        console.log(`Выбран язык: ${activeLanguage}`);
-        setLanguage(activeLanguage);
-        closeDialog()
+        languageUser = button.dataset.language;
+        console.log(`Выбран язык: ${languageUser}`);
+        setLanguage();
+        closeDialog();
     });
 });
 
-function setLanguage(language) {
-    htmlElement.lang = language;
+console.log(localStorage.getItem('language'));
+
+function setLanguage() {
+    htmlElement.lang = languageUser;
+    localStorage.setItem('language', languageUser);
+    setHeaderAlt();
+    setFooterText();
 };
 
 languageBTN.addEventListener('click', () => {
@@ -99,12 +116,62 @@ function closeDialog() {
     document.body.classList.remove('no-scroll');
 }
 
-closeLanguageBTN.addEventListener('click', () => {
-    closeDialog();
-});
-
 window.addEventListener("popstate", () => {
     if (dialog.open) {
         closeDialog();
     }
 });
+
+// Header
+const header = document.querySelector('header');
+
+function setHeaderAlt() {
+    header.innerHTML = `<a href="#"><img id="logo" src="image/LogoAPLight.svg" alt="${window.headerAlt[languageUser]}"></a>`;
+}
+
+setHeaderAlt()
+
+// Footer
+const footer = document.querySelector('footer');
+
+function setFooterText() {
+    footer.innerHTML = `<p class="footer">
+            © 2026 ${window.footerText[languageUser].name}
+            <span class="dot">·</span>
+            ${window.footerText[languageUser].githubText} —
+            <a href="https://github.com/Bentor48"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-link"
+            aria-label="Мой GitHub">
+
+            <svg id="svgGitHub" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.11 3.29 9.45 7.86 10.98.58.11.79-.25.79-.56
+                0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54
+                -.53-1.36-1.3-1.72-1.3-1.72
+                -1.06-.73.08-.72.08-.72
+                1.17.08 1.79 1.2 1.79 1.2
+                1.04 1.78 2.73 1.27 3.4.97
+                .11-.75.41-1.27.74-1.56
+                -2.56-.29-5.26-1.28-5.26-5.69
+                0-1.26.45-2.29 1.19-3.1
+                -.12-.29-.52-1.46.11-3.05
+                0 0 .97-.31 3.18 1.18
+                .92-.26 1.9-.39 2.88-.39
+                .98 0 1.96.13 2.88.39
+                2.2-1.49 3.18-1.18 3.18-1.18
+                .63 1.59.23 2.76.11 3.05
+                .74.81 1.19 1.84 1.19 3.1
+                0 4.42-2.7 5.39-5.27 5.67
+                .42.36.8 1.08.8 2.18
+                0 1.57-.01 2.84-.01 3.23
+                0 .31.21.68.8.56
+                4.57-1.53 7.85-5.87 7.85-10.98
+                C23.5 5.74 18.27.5 12 .5z"/>
+            </svg>
+            </a>
+        </p>`;
+}
+
+setFooterText();

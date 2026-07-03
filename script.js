@@ -1,5 +1,12 @@
-// Нота Ля старт
+const changeLanguageBTN = document.querySelectorAll('.languageButton');
 
+changeLanguageBTN.forEach((btn) => {
+    btn.addEventListener('click', () => {
+    changeHTMLLanguage()
+    });
+});
+
+// Нота Ля старт
 let noteA = false;
 const textP = document.getElementById('welcome-containerp');
 const checkboxButton = document.getElementById('noteA');
@@ -25,10 +32,10 @@ checkboxButton.addEventListener('click', forNoteA);
 
 function forNoteA() {
     if(!noteA) {
-        textP.innerText = 'После нажатия на кнопку "Начать" вы услышите для настройки слуха ноту Ля(А). Затем сосредоточьтесь на играющей неизвестной ноте. Ваша задача - угадать, какая нота была сыграна. Также вы можете настроить длительность воспроизведения.';
+        textP.innerText = window.dictionaryGuessNote[languageUser].inst_p_A;
         noteA = true;
     } else {
-        textP.innerText = 'После нажатия на кнопку "Начать" вы услышите звук ноты. Ваша задача - угадать, какая нота была сыграна. Также вы можете настроить длительность воспроизведения.';
+        textP.innerText = window.dictionaryGuessNote[languageUser].inst_p;
         noteA = false;
     }
 };
@@ -49,8 +56,8 @@ function playNoteA() {
     oscillator.start();
 
     
-    svgForStart.alt = 'Метроном издаёт звук';
-    timerP.innerText = 'Ля(A)';
+    svgForStart.alt = window.dictionaryGuessNote[languageUser].noteAAlt;
+    timerP.innerText = window.dictionaryGuessNote[languageUser].noteA;
     if (localStorage.getItem('theme') === 'dark') svgForStart.src = 'image/forkLight.svg';
     else svgForStart.src = 'image/forkDark.svg';
         
@@ -85,18 +92,18 @@ const window2 = document.getElementById('window2ForTimer');
 //Массив нот
 
 const notes = [
-    { name: "До", file: "music/c.mp3", number: 0},
-    { name: "До#", file: "music/cSharp.mp3", number: 1},
-    { name: "Ре", file: "music/d.mp3", number: 2},
-    { name: "Ми♭", file: "music/eFlat.mp3", number: 3},
-    { name: "Ми", file: "music/e.mp3", number: 4},
-    { name: "Фа", file: "music/f.mp3", number: 5},
-    { name: "Фа#", file: "music/fSharp.mp3", number: 6},
-    { name: "Соль", file: "music/g.mp3", number: 7},
-    { name: "Соль#", file: "music/gSharp.mp3", number: 8},
-    { name: "Ля", file: "music/a.mp3", number: 9},
-    { name: "Си♭", file: "music/bFlat.mp3", number: 10},
-    { name: "Си", file: "music/b.mp3", number: 11}
+    { name: window.fortepianoNotes[languageUser][0], file: "music/c.mp3", number: 0},
+    { name: window.fortepianoNotes[languageUser][1], file: "music/cSharp.mp3", number: 1},
+    { name: window.fortepianoNotes[languageUser][2], file: "music/d.mp3", number: 2},
+    { name: window.fortepianoNotes[languageUser][3], file: "music/eFlat.mp3", number: 3},
+    { name: window.fortepianoNotes[languageUser][4], file: "music/e.mp3", number: 4},
+    { name: window.fortepianoNotes[languageUser][5], file: "music/f.mp3", number: 5},
+    { name: window.fortepianoNotes[languageUser][6], file: "music/fSharp.mp3", number: 6},
+    { name: window.fortepianoNotes[languageUser][7], file: "music/g.mp3", number: 7},
+    { name: window.fortepianoNotes[languageUser][8], file: "music/gSharp.mp3", number: 8},
+    { name: window.fortepianoNotes[languageUser][9], file: "music/a.mp3", number: 9},
+    { name: window.fortepianoNotes[languageUser][10], file: "music/bFlat.mp3", number: 10},
+    { name: window.fortepianoNotes[languageUser][11], file: "music/b.mp3", number: 11}
 ];
 
 startBNT.addEventListener('click', () => {
@@ -129,7 +136,7 @@ startBNT.addEventListener('click', () => {
             } 
             
             else if(timeLeftForStart === 0){
-                timerP.innerText = 'Старт!'
+                timerP.innerText = window.dictionaryGuessNote[languageUser].start_button_p;
             }
 
             else {
@@ -143,7 +150,7 @@ startBNT.addEventListener('click', () => {
 
         if (localStorage.getItem('theme') === 'dark') svgForStart.src = 'image/ListenLight.svg';
         else svgForStart.src = 'image/ListenDark.svg';
-        svgForStart.alt = 'Человек внимательно слушает музыку';
+        svgForStart.alt = window.dictionaryGuessNote[languageUser].ear;
         svgForStart.style.display = 'flex';
         timerP.style.display = 'none';
         
@@ -246,24 +253,6 @@ resultBNT.addEventListener('click', () => {
     }
 })
 
-// Массив фраз Должно быть всегда одинаковое количество фраз
-
-const successMessages = [
-    "Отлично! Вы угадали ноту!",
-    "Превосходно! Ваш слух вас не подвёл!",
-    "Верно! Так держать!",
-    "Браво! Вы отлично справились!",
-    "Правильный ответ! Продолжайте в том же духе!"
-];
-
-const failMessages = [
-    "Пока не получилось. Попробуйте ещё раз!",
-    "Ничего страшного, слух развивается с практикой!",
-    "Почти! Следующая попытка может быть удачной.",
-    "Не сдавайтесь! Каждая попытка делает вас лучше.",
-    "Ошибки — это часть обучения. Попробуйте снова!"
-];
-
 function checkResuit () {
     window3ForPiano.style.display = 'none';
 
@@ -278,14 +267,63 @@ function checkResuit () {
 
     // парвильная нота
     const correctNote = document.getElementById('correctNote');
-    correctNote.innerHTML = `Правильная нота<br>${randomNoteName}`;
+    correctNote.innerHTML = `${window.dictionaryGuessNote[languageUser].correct_note}${randomNoteName}`;
 
 
-    const randomNumberForMessages = Math.floor(Math.random() * successMessages.length);
+    const randomNumberForMessages = Math.floor(Math.random() * window.successMessages[languageUser].length);
 
     if(randomNoteNumber === Number(keyForResult)) {
-        textForResult.innerText = successMessages[randomNumberForMessages];
+        textForResult.innerText = window.successMessages[languageUser][randomNumberForMessages];
     } else {
-        textForResult.innerText = failMessages[randomNumberForMessages];
+        textForResult.innerText = window.failMessages[languageUser][randomNumberForMessages];
     }
 }
+
+function changeHTMLLanguage() {
+    const dict = window.dictionaryGuessNote[languageUser];
+    const dictF = window.fortepianoNotes[languageUser];
+
+    document.title = dict.title;
+    const welcome_containerh1 = document.getElementById('welcome-containerh1');
+    welcome_containerh1.innerHTML = dict.titleh1;
+    const welcome_containerp = document.getElementById('welcome-containerp');
+    welcome_containerp.innerText = dict.inst_p;
+    const noteALabel = document.getElementById('noteALabel');
+    noteALabel.innerText = dict.Listen;
+    const counterText = document.getElementById('counterText');
+    counterText.innerHTML = dict.counter;
+    const counterNameTime = document.getElementById('counterNameTime');
+    counterNameTime.innerHTML = dict.counter_value;
+    const startbtn = document.getElementById('start-btn');
+    startbtn.innerText = dict.start_button_p;
+    const doNote = document.getElementById('do');
+    doNote.innerText = dictF[0];
+    const doSharpNote = document.getElementById('do-sharp');
+    doSharpNote.innerText = dictF[1];
+    const reNote = document.getElementById('re');
+    reNote.innerText = dictF[2];
+    const reSharpNote = document.getElementById('mi-flat');
+    reSharpNote.innerText = dictF[3];
+    const miNote = document.getElementById('mi');
+    miNote.innerText = dictF[4];
+    const faNote = document.getElementById('fa');
+    faNote.innerText = dictF[5];
+    const faSharpNote = document.getElementById('fa-sharp');
+    faSharpNote.innerText = dictF[6];
+    const solNote = document.getElementById('sol');
+    solNote.innerText = dictF[7];
+    const solSharpNote = document.getElementById('sol-sharp');
+    solSharpNote.innerText = dictF[8];
+    const laNote = document.getElementById('la');
+    laNote.innerText = dictF[9];
+    const laSharpNote = document.getElementById('si-flat');
+    laSharpNote.innerText = dictF[10];
+    const siNote = document.getElementById('si');
+    siNote.innerText = dictF[11];
+    const checkButton = document.getElementById('resultButton');
+    checkButton.innerText = dict.check;
+    const restartBNT = document.getElementById('restartBNT');
+    restartBNT.innerText = dict.restart;
+}
+
+changeHTMLLanguage();

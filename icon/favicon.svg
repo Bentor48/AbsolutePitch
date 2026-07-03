@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000f58;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 7px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="_Слой_1" data-name="Слой 1">
+    <rect class="cls-1" width="160" height="160" rx="34.15" ry="34.15"/>
+  </g>
+  <g id="_Слой_2" data-name="Слой 2">
+    <g id="_Слой_1-2" data-name=" Слой 1">
+      <path class="cls-2" d="M48.67,16.59l-20.35,77.16-4.82,18.26-8.29,31.41h10.77l8.29-31.41h14.4v31.41h10.77V16.59h-10.77ZM39.09,93.74l9.58-36.32v36.32h-9.58,0Z"/>
+    </g>
+    <g id="_Слой_2-2" data-name=" Слой 2">
+      <rect class="cls-2" x="70.5" y="16.59" width="10.77" height="126.83"/>
+      <rect class="cls-2" x="81.27" y="16.59" width="10.77" height="126.83"/>
+      <rect class="cls-2" x="92.04" y="16.59" width="10.77" height="126.83"/>
+      <rect class="cls-3" x="88.42" y="16.59" width="7.25" height="63.41"/>
+      <rect class="cls-3" x="77.65" y="16.59" width="7.25" height="63.41"/>
+    </g>
+    <g id="_Слой_3" data-name=" Слой 3">
+      <rect class="cls-2" x="113.59" y="16.59" width="10.77" height="126.83"/>
+      <path class="cls-2" d="M127.49,87.48c9.55,0,17.29-15.87,17.29-35.45s-7.74-35.45-17.29-35.45v22.45c3.46,0,6.52,5.91,6.52,13s-3.06,12.92-6.52,12.92v22.52Z"/>
+    </g>
+  </g>
+</svg>
