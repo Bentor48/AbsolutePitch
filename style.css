@@ -117,6 +117,7 @@ header a {
     color: var(--colorForText);
     margin-bottom: 3dvh;
     background-color: var(--forContinueBTN);
+    min-height: 60px;
 }
 
 #languageDialog::backdrop {
