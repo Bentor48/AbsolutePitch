@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Угадай ноту</title>
+    <script src="dictionary.js" defer></script>
 </head>
 <body>
     <header>
@@ -12,9 +13,8 @@
     </header>
 
     <main>
-
         <div id="window1ForStart" class="fullWindow1">
-            <div id="settings"></div>
+            <div id="settings-container"></div>
 
             <h1 id="welcome-containerh1" class="containerh1">Угадай<br>ноту</h1>
             <p id="welcome-containerp" class="containerp">После нажатия на кнопку "Начать" вы услышите звук ноты. Ваша задача - угадать, какая нота была сыграна. Также вы можете настроить длительность воспроизведения.</p>
@@ -62,7 +62,7 @@
             <p id="textForResult" class="containerp"></p>
             <button id="restartBNT" onclick="location.reload()" class="buttonForContine">Попробовать ещё раз</button>
         </div>
-        <script src="scriptForTheme.js"></script>
+        <script src="scriptSetting.js"></script>
         <script src="script.js"></script>
     </main>
 

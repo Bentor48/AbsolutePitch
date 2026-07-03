@@ -267,7 +267,7 @@ const failMessages = [
 function checkResuit () {
     window3ForPiano.style.display = 'none';
 
-    if(window.matchMedia("(orientation: landscape) and (pointer: coarse)").matches || window.matchMedia("(min-width: 1024px").matches) {
+    if(window.matchMedia("(orientation: landscape) and (pointer: coarse)").matches || window.matchMedia("(min-width: 1024px)").matches) {
         window4ForResult.style.display = 'grid';
     } else {
         window4ForResult.style.display = 'flex';
@@ -278,7 +278,7 @@ function checkResuit () {
 
     // парвильная нота
     const correctNote = document.getElementById('correctNote');
-    correctNote.innerHTML = `Правильная нота <br>${randomNoteName}`;
+    correctNote.innerHTML = `Правильная нота<br>${randomNoteName}`;
 
 
     const randomNumberForMessages = Math.floor(Math.random() * successMessages.length);
