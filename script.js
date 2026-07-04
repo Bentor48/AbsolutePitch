@@ -159,7 +159,7 @@ startBNT.addEventListener('click', () => {
 
             console.log(notes[randomIndex].name);
             randomNoteNumber = notes[randomIndex].number;
-            randomNoteName = notes[randomIndex].name;
+            randomNoteName = notes[randomIndex].number;
 
             const audio = new Audio(
                 notes[randomIndex].file
@@ -267,7 +267,7 @@ function checkResuit () {
 
     // парвильная нота
     const correctNote = document.getElementById('correctNote');
-    correctNote.innerHTML = `${window.dictionaryGuessNote[languageUser].correct_note}${randomNoteName}`;
+    correctNote.innerHTML = `${window.dictionaryGuessNote[languageUser].correct_note}${window.fortepianoNotes[languageUser][randomNoteName]}`;
 
 
     const randomNumberForMessages = Math.floor(Math.random() * window.successMessages[languageUser].length);
