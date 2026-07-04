@@ -319,8 +319,9 @@ dialog::backdrop {
     background-color: var(--background);
     color: var(--colorForText);
     text-align: center;
-    width: 40%;
+    width: 80%;
     padding: 0;
+    min-width: 300px;
 }
 
 #unselectedNoteText {
@@ -541,6 +542,10 @@ footer {
         height: 1.5em;
     }
 
+    #unselectedNote {
+        width: 40%;
+    }
+
     #fortepiano {
         display: flex;
         flex-direction: row-reverse;
@@ -694,6 +699,10 @@ footer {
     #svgGitHub {
         width: 1.5em;
         height: 1.5em;
+    }
+
+    #unselectedNote {
+        width: 40%;
     }
 
     #fortepiano {
