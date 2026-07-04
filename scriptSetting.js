@@ -23,7 +23,6 @@ function addSettingForWindow() {
         <button class="setBTN" id="theme">${activeTheme ? logoSVGForSettings.moon : logoSVGForSettings.sun}</button>
     </div>
     <dialog id="languageDialog">
-        <h2>Выберите язык</h2>
         <button class="languageButton" data-language="en">English</button>
         <button class="languageButton" data-language="uk">Українська</button>
         <button class="languageButton" data-language="ru">Русский</button>

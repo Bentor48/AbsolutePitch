@@ -102,19 +102,15 @@ header a {
     text-align: center;
     width: 70%;
     padding: 0;
+    border: 2px solid var(--colorForText);
 }
 
-#languageDialog h2 {
-    margin: 5% 5% 5% 5%;
-    font-size: clamp(1rem, 8dvw, 9rem);
-}
 
 .languageButton {
     width: 90%;
     height: 8dvh;
     border-radius: 10px;
     border: 2px solid var(--colorForText);
-    font-size: 3dvh;
     cursor: pointer;
     align-self: center;
     text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
@@ -125,7 +121,11 @@ header a {
     font-size: 2rem;
 }
 
-#languageDialog::backdrop {
+.languageButton:first-of-type {
+    margin-top: 3dvh;
+}
+
+dialog::backdrop {
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -310,6 +310,30 @@ header a {
 }
 
 /* Стили для окна с пианино */
+
+/*Ненажатая нота*/
+
+#unselectedNote {
+    border: 2px solid var(--colorForText);
+    border-radius: 10px;
+    background-color: var(--background);
+    color: var(--colorForText);
+    text-align: center;
+    width: 40%;
+    padding: 0;
+}
+
+#unselectedNoteText {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+    color: var(--colorForText);
+    min-height: 60px;
+    font-size: 3rem;
+    margin: 3vh;
+}
+
+#unselectedNote::backdrop {
+    cursor: pointer;
+}
 
 #window3ForPiano {
     display: none;

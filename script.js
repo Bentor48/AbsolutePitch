@@ -244,14 +244,37 @@ function startPiano() {
 
 // кнопка проверить
 const resultBNT = document.getElementById('resultButton');
+const unselectedNoteDialog = document.getElementById('unselectedNote');
+const unselectedNoteText = document.getElementById('unselectedNoteText');
 
 resultBNT.addEventListener('click', () => {
     if(!keyForResult) {
-        alert('Выберите вариант ответа');
+        unselectedNoteText.innerText = window.dictionaryGuessNote[languageUser].unselectedNote;
+        unselectedNoteDialog.showModal();
     } else {
         checkResuit()
     }
 })
+
+unselectedNoteDialog.addEventListener("click", (event) => {
+    const rect = unselectedNoteDialog.getBoundingClientRect();
+
+    const clickedOutside =
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom;
+
+    if (clickedOutside) {
+        unselectedNoteDialog.close();
+    }
+});
+
+window.addEventListener("popstate", () => {
+    if (unselectedNoteDialog.open) {
+        unselectedNoteDialog.close();
+    }
+});
 
 function checkResuit () {
     window3ForPiano.style.display = 'none';
