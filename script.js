@@ -92,18 +92,18 @@ const window2 = document.getElementById('window2ForTimer');
 //Массив нот
 
 const notes = [
-    { name: window.fortepianoNotes[languageUser][0], file: "music/c.mp3", number: 0},
-    { name: window.fortepianoNotes[languageUser][1], file: "music/cSharp.mp3", number: 1},
-    { name: window.fortepianoNotes[languageUser][2], file: "music/d.mp3", number: 2},
-    { name: window.fortepianoNotes[languageUser][3], file: "music/eFlat.mp3", number: 3},
-    { name: window.fortepianoNotes[languageUser][4], file: "music/e.mp3", number: 4},
-    { name: window.fortepianoNotes[languageUser][5], file: "music/f.mp3", number: 5},
-    { name: window.fortepianoNotes[languageUser][6], file: "music/fSharp.mp3", number: 6},
-    { name: window.fortepianoNotes[languageUser][7], file: "music/g.mp3", number: 7},
-    { name: window.fortepianoNotes[languageUser][8], file: "music/gSharp.mp3", number: 8},
-    { name: window.fortepianoNotes[languageUser][9], file: "music/a.mp3", number: 9},
-    { name: window.fortepianoNotes[languageUser][10], file: "music/bFlat.mp3", number: 10},
-    { name: window.fortepianoNotes[languageUser][11], file: "music/b.mp3", number: 11}
+    {file: "music/c.mp3", number: 0},
+    { file: "music/cSharp.mp3", number: 1},
+    { file: "music/d.mp3", number: 2},
+    { file: "music/eFlat.mp3", number: 3},
+    { file: "music/e.mp3", number: 4},
+    { file: "music/f.mp3", number: 5},
+    { file: "music/fSharp.mp3", number: 6},
+    { file: "music/g.mp3", number: 7},
+    { file: "music/gSharp.mp3", number: 8},
+    { file: "music/a.mp3", number: 9},
+    { file: "music/bFlat.mp3", number: 10},
+    { file: "music/b.mp3", number: 11}
 ];
 
 startBNT.addEventListener('click', () => {
