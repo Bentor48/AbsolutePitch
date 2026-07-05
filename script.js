@@ -20,6 +20,12 @@ let randomNoteName;
 // результат выбора
 let keyForResult;
 
+// Правильно угаданных нот
+let correctlyNotes = 0;
+
+// Количество попыток;
+let numberAttempts = 0;
+
 // длинна ноты ля
 const noteADuration = 1200;
 // параграф дял подсказки
@@ -109,137 +115,132 @@ const notes = [
 startBNT.addEventListener('click', () => {
     window1.style.display = 'none';
     window2.style.display = 'flex';
-
-    let timeLeftForStart = 3;
-
     if(noteA) {
         playNoteA();
         setTimeout(startTimer, noteADuration); 
     } else {
         startTimer();
     }
-
-    setTimeout(startRandomNote, 4000);
-
-    function startTimer() {
-
-        svgForStart.style.display = 'none';
-        timerP.innerText = timeLeftForStart;
-
-        const intervalId = setInterval(() => {
-            timeLeftForStart--
-
-            timerP.innerText = timeLeftForStart;
-
-            if (timeLeftForStart > 0) {
-                timerP.innerText = timeLeftForStart
-            } 
-            
-            else if(timeLeftForStart === 0){
-                timerP.innerText = window.dictionaryGuessNote[languageUser].start_button_p;
-            }
-
-            else {
-                clearInterval(intervalId);
-            }
-        }, 1000);
-
-    }
-
-    function startRandomNote() {
-
-        if (localStorage.getItem('theme') === 'dark') svgForStart.src = 'image/ListenLight.svg';
-        else svgForStart.src = 'image/ListenDark.svg';
-        svgForStart.alt = window.dictionaryGuessNote[languageUser].ear;
-        svgForStart.style.display = 'flex';
-        timerP.style.display = 'none';
-        
-        function playRandomNote() {
-            const randomIndex = Math.floor(Math.random() * notes.length);
-
-            console.log(notes[randomIndex].name);
-            randomNoteNumber = notes[randomIndex].number;
-            randomNoteName = notes[randomIndex].number;
-
-            const audio = new Audio(
-                notes[randomIndex].file
-            );
-
-            const audioContext = new AudioContext();
-            const source = audioContext.createMediaElementSource(audio)
-
-
-            const gainNode = audioContext.createGain();
-            gainNode.gain.value = 4;
-
-            source.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-
-            audio.play()
-
-            setTimeout(() => {
-                audio.pause();
-                audio.currentTime = 0;
-                startPiano()
-            }, Number(counter.value) * 1000);
-        }
-
-        playRandomNote();
-    }
 })
+
+
+let timeLeftForStart = 3;
+
+function startTimer() {
+    svgForStart.style.display = "none";
+    timerP.innerText = timeLeftForStart;
+
+    const intervalId = setInterval(() => {
+    timeLeftForStart--;
+
+    timerP.innerText = timeLeftForStart;
+
+    if (timeLeftForStart > 0) {
+            timerP.innerText = timeLeftForStart;
+        } else if (timeLeftForStart === 0) {
+            timerP.innerText =
+            window.dictionaryGuessNote[languageUser].start_button_p;
+        } else {
+            clearInterval(intervalId);
+            startRandomNote();
+        }
+    }, 400);
+}
+
+function startRandomNote() {
+if (localStorage.getItem("theme") === "dark") svgForStart.src = "image/ListenLight.svg";
+else svgForStart.src = "image/ListenDark.svg";
+    svgForStart.alt = window.dictionaryGuessNote[languageUser].ear;
+    svgForStart.style.display = "flex";
+    timerP.style.display = "none";
+
+    function playRandomNote() {
+        const randomIndex = Math.floor(Math.random() * notes.length);
+
+        randomNoteNumber = notes[randomIndex].number;
+        randomNoteName = notes[randomIndex].number;
+        console.log(randomNoteName);
+
+        const audio = new Audio(notes[randomIndex].file);
+
+        const audioContext = new AudioContext();
+        const source = audioContext.createMediaElementSource(audio);
+
+        const gainNode = audioContext.createGain();
+        gainNode.gain.value = 4;
+
+        source.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        audio.play();
+
+        setTimeout(
+          () => {
+            audio.pause();
+            audio.currentTime = 0;
+            audioContext.close();
+            startPiano();
+          },
+          Number(counter.value) * 1000,
+        );
+    }
+
+    playRandomNote();
+}
+
+// кнопки фо-но
+
+const whiteBtn = document.querySelectorAll('.white-btn');
+const blackBtn = document.querySelectorAll('.black-btn');
+
+// Белые клавиши активные
+
+whiteBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('Пользователь нажал белую кнопку' + button.dataset.note);
+        // Стандартный стиль
+
+        whiteBtn.forEach(button => {
+            button.style.backgroundColor = 'var(--white)';
+            button.style.color = "";
+        });
+                
+        blackBtn.forEach(button => {
+            button.style.backgroundColor = 'var(--black)';
+            button.style.color = "";
+        });
+
+        if (localStorage.getItem('theme') === 'light') button.style.color = 'var(--white)';
+
+        button.style.backgroundColor = 'var(--whiteForFocus)';
+        keyForResult = button.dataset.note;
+    });
+});
+
+blackBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('Пользователь нажал черную кнопку' + button.dataset.note);
+        // Стандартный стиль
+
+        whiteBtn.forEach(button => {
+            button.style.backgroundColor = 'var(--white)';
+            button.style.color = "";
+        });
+                
+        blackBtn.forEach(button => {
+            button.style.backgroundColor = 'var(--black)';
+            button.style.color = "";
+        });
+
+        if (localStorage.getItem('theme') === 'light') button.style.color = 'var(--black)';
+        button.style.backgroundColor = 'var(--blackForFocus)';
+        keyForResult = button.dataset.note;
+    });
+});
 
 function startPiano() {
     window2ForTimer.style.display = 'none';
     window3ForPiano.style.display = 'flex';
-    
-    // кнопки фо-но
-    const whiteBtn = document.querySelectorAll('.white-btn');
-    const blackBtn = document.querySelectorAll('.black-btn');
-
-    // Белые клавиши активные
-
-    whiteBtn.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('Пользователь нажал белую кнопку' + button.dataset.note);
-            // Стандартный стиль
-
-            whiteBtn.forEach(button => {
-                button.style.backgroundColor = 'var(--white)';
-                button.style.color = "";
-            });
-                
-            blackBtn.forEach(button => {
-                button.style.backgroundColor = 'var(--black)';
-                button.style.color = "";
-            });
-
-            if (localStorage.getItem('theme') === 'light') button.style.color = 'var(--white)';
-
-            button.style.backgroundColor = 'var(--whiteForFocus)';
-            keyForResult = button.dataset.note;
-        });
-    });
-
-    blackBtn.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('Пользователь нажал черную кнопку' + button.dataset.note);
-            // Стандартный стиль
-
-            whiteBtn.forEach(button => {
-                button.style.backgroundColor = 'var(--white)';
-                button.style.color = "";
-            });
-                
-            blackBtn.forEach(button => {
-                button.style.backgroundColor = 'var(--black)';
-                button.style.color = "";
-            });
-
-            if (localStorage.getItem('theme') === 'light') button.style.color = 'var(--black)';
-            button.style.backgroundColor = 'var(--blackForFocus)';
-            keyForResult = button.dataset.note;
-        });
-    });
 }
 
 // кнопка проверить
@@ -251,6 +252,7 @@ resultBNT.addEventListener('click', () => {
     if(!keyForResult) {
         unselectedNoteText.innerText = window.dictionaryGuessNote[languageUser].unselectedNote;
         unselectedNoteDialog.showModal();
+        history.pushState({ dialog: "unselectedNote" }, "");
     } else {
         checkResuit()
     }
@@ -276,6 +278,8 @@ window.addEventListener("popstate", () => {
     }
 });
 
+const window4ForResult = document.getElementById('window4ForResult');
+
 function checkResuit () {
     window3ForPiano.style.display = 'none';
 
@@ -297,9 +301,50 @@ function checkResuit () {
 
     if(randomNoteNumber === Number(keyForResult)) {
         textForResult.innerText = window.successMessages[languageUser][randomNumberForMessages];
+        correctlyNotes++;
     } else {
         textForResult.innerText = window.failMessages[languageUser][randomNumberForMessages];
     }
+}
+
+const restartBNT = document.getElementById('restartBNT');
+
+restartBNT.addEventListener('click',() => {
+    if(numberAttempts >= 4) {
+        location.reload();
+    } else RestartResult()
+})
+
+function RestartResult() {
+    numberAttempts++;
+
+    checkboxButton.checked = false;
+    noteA = false;
+
+    randomNoteNumber = null;
+    randomNoteName = null;
+    keyForResult = null;
+
+    timeLeftForStart = 3;
+
+    whiteBtn.forEach(button => {
+        button.style.backgroundColor = "var(--white)";
+        button.style.color = "";
+    });
+    blackBtn.forEach(button => {
+        button.style.backgroundColor = "var(--black)";
+        button.style.color = "";
+    });
+
+    window4ForResult.style.display = 'none';
+    window2.style.display = 'flex';
+    timerP.style.display = 'block';
+
+    if(numberAttempts === 4) {
+        restartBNT.innerText = window.dictionaryGuessNote[languageUser].restart;
+    }
+
+    startTimer();
 }
 
 function changeHTMLLanguage() {
@@ -346,7 +391,7 @@ function changeHTMLLanguage() {
     const checkButton = document.getElementById('resultButton');
     checkButton.innerText = dict.check;
     const restartBNT = document.getElementById('restartBNT');
-    restartBNT.innerText = dict.restart;
+    restartBNT.innerText = dict.continue;
 }
 
 changeHTMLLanguage();
