@@ -397,17 +397,23 @@ dialog::backdrop {
 
 /*окно результата*/
 
-#window4ForResult {
+.resultWindowForNote {
     display: none;
     align-items: center;
 }
 
-#correctNote {
+.correctNoteScore {
     margin: 10dvh 5dvw 5dvh 5dvw;
 }
 
-#textForResult {
+.textForResult {
     font-size: clamp(2rem, 7vw, 3rem);
+}
+
+/*Окно общего результата*/
+
+#window5ForFullResult {
+    display: none;
 }
 
 /*футер*/
@@ -606,23 +612,23 @@ footer {
         grid-column: span 2;
     }
 
-    #window4ForResult {
+    .resultWindowForNote {
         display: none;
         grid-template-columns: repeat(2, 1fr);
         gap: 3vh;
     }
 
-    #correctNote {
+    .correctNoteScore {
         font-size: clamp(2rem, 5vw, 6rem);
     }
 
-    #textForResult {
+    .textForResult {
         max-width: 55vh;
         margin: 12vh auto 0 auto;
         font-size: clamp(0.5rem, 5vw, 3.5rem);
     } 
 
-    #restartBNT {
+    .restartBNT {
         grid-column: span 2;
         margin: 0 auto;
     }
@@ -762,19 +768,19 @@ footer {
         margin: 0;
     }
 
-    #window4ForResult {
+    .resultWindowForNote {
         display: none;
         grid-template-columns: repeat(2, 1fr);
         gap: 3dvh;
     }
 
-    #textForResult {
+    .textForResult {
         max-width: 55vh;
         margin: 12vh auto 0 auto;
         font-size: clamp(0.5rem, 5vw, 3.5rem);
     } 
 
-    #restartBNT {
+    .restartBNT {
         grid-column: span 2;
         margin: 0 auto;
     }

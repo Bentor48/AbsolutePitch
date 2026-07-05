@@ -311,7 +311,7 @@ const restartBNT = document.getElementById('restartBNT');
 
 restartBNT.addEventListener('click',() => {
     if(numberAttempts >= 4) {
-        location.reload();
+        calculateResult();
     } else RestartResult()
 })
 
@@ -340,13 +340,36 @@ function RestartResult() {
     window2.style.display = 'flex';
     timerP.style.display = 'block';
 
-    if(numberAttempts === 4) {
-        restartBNT.innerText = window.dictionaryGuessNote[languageUser].restart;
-    }
-
     startTimer();
 }
 
+// итоговое окно
+
+const window5ForFullResult = document.getElementById('window5ForFullResult');
+const score = document.getElementById('score');
+const motivationResults = document.getElementById('motivationResults');
+const restartHtmlBNT = document.getElementById('restartHtmlBNT');
+
+function calculateResult() {
+    window4ForResult.style.display = 'none';
+
+    if(window.matchMedia("(orientation: landscape) and (pointer: coarse)").matches || window.matchMedia("(min-width: 1024px)").matches) {
+        window5ForFullResult.style.display = 'grid';
+    } else {
+        window5ForFullResult.style.display = 'flex';
+    }
+
+    score.innerText = correctlyNotes;
+
+    const randomFinalMassege = Math.floor(Math.random() * window.finalMessages[languageUser][correctlyNotes].length);
+    motivationResults.innerText = window.finalMessages[languageUser][correctlyNotes][randomFinalMassege];
+
+    restartHtmlBNT.innerText = window.dictionaryGuessNote[languageUser].restart;
+}
+
+restartHtmlBNT.addEventListener('click', () => location.reload());
+
+// динамический перевод языка
 function changeHTMLLanguage() {
     const dict = window.dictionaryGuessNote[languageUser];
     const dictF = window.fortepianoNotes[languageUser];
