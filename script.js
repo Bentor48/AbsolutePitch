@@ -15,6 +15,7 @@ const svgForStart = document.getElementById('svgForStart');
 // Рандомная нота
 
 let randomNoteNumber;
+let pastRandomNoteNumber;
 let randomNoteName;
 
 // результат выбора
@@ -155,7 +156,13 @@ else svgForStart.src = "image/ListenDark.svg";
     timerP.style.display = "none";
 
     function playRandomNote() {
-        const randomIndex = Math.floor(Math.random() * notes.length);
+        let randomIndex
+
+        do {
+            randomIndex = Math.floor(Math.random() * notes.length);
+        } while (randomIndex === pastRandomNoteNumber);
+
+        pastRandomNoteNumber = randomIndex;
 
         randomNoteNumber = notes[randomIndex].number;
         randomNoteName = notes[randomIndex].number;
@@ -167,7 +174,7 @@ else svgForStart.src = "image/ListenDark.svg";
         const source = audioContext.createMediaElementSource(audio);
 
         const gainNode = audioContext.createGain();
-        gainNode.gain.value = 4;
+        gainNode.gain.value = 5;
 
         source.connect(gainNode);
         gainNode.connect(audioContext.destination);
