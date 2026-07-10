@@ -416,6 +416,13 @@ dialog::backdrop {
     display: none;
 }
 
+#fullResult {
+    border: 8px solid var(--colorForText);
+    color: #f6be05;
+    border-radius: 5px;
+    padding: 10%;
+}
+
 /*футер*/
 
 footer {
