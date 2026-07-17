@@ -1,0 +1,560 @@
+/*Окно 1*/
+
+.fullWindow1 {
+    width: 100%;
+    min-height: 83dvh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*Стили чекбох*/
+
+#noteA-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: clamp(0.5rem, 5vw, 2rem);
+}
+
+#noteA {
+    width: 7dvh;
+    height: 7dvh;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: 2px solid var(--colorForText);
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+    position: relative;
+}
+
+#noteA:checked::after {
+    content: "";
+
+    position: absolute;
+
+    width: 60%;
+    height: 60%;
+
+    border-radius: 50%;
+
+    background-color: var(--colorForText);
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s;
+}
+
+#noteA:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#counter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: clamp(0.5rem, 5vw, 2rem);
+}
+
+
+
+/* Стили для ползунка */
+
+#counter {
+    appearance: none;
+    -webkit-appearance: none;
+    touch-action: none;
+
+    width: 22%;
+    height: 23%;
+
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Стили для трека ползунка */
+
+#counter::-webkit-slider-runnable-track {
+    border-radius: 5dvw;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+}
+
+#counter::-moz-range-track {
+    border-radius: 5dvw;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+}
+
+/* Стили для ползунка */
+
+#counter::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 5dvw;
+    height: 5dvw;
+
+    border-radius: 50%;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+
+    cursor: pointer;
+}
+
+#counter::-moz-range-thumb {
+    width: 5dvw;
+    height: 5dvw;
+    border-radius: 50%;
+    background: var(--background);
+    border: 2px solid var(--colorForText);
+
+    cursor: pointer;
+}
+
+.buttonForContine {
+    width: 80%;
+    height: 8dvh;
+    border-radius: 10px;
+    border: 2px solid var(--colorForText);
+    font-size: 3dvh;
+    cursor: pointer;
+    align-self: center;
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+    color: var(--colorForText);
+    margin-bottom: 5%;
+    background-color: var(--forContinueBTN);
+}
+
+/*Окно 2*/
+
+#window2ForTimer {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#svgForStart {
+    width: 80dvw;
+    height: 25dvh;
+    display: flex;
+    
+}
+
+#timer {
+    height: 20dvh;
+    font-size: 10dvh;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для окна с пианино */
+
+/*Ненажатая нота*/
+
+#unselectedNote {
+    border: 2px solid var(--colorForText);
+    border-radius: 10px;
+    background-color: var(--background);
+    color: var(--colorForText);
+    text-align: center;
+    width: 80%;
+    padding: 0;
+    min-width: 300px;
+}
+
+#unselectedNoteText {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.453);
+    color: var(--colorForText);
+    min-height: 60px;
+    font-size: 3rem;
+    margin: 3vh;
+}
+
+#unselectedNote::backdrop {
+    cursor: pointer;
+}
+
+#window3ForPiano {
+    display: none;
+    justify-content: space-evenly;
+}
+
+#fortepiano {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.white-btn {
+    height: 8vh;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 10px;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 3vh;
+    position: relative;
+    z-index: 1;
+    border-radius: 0 10px 10px 0;
+}
+
+.black-btn {
+    height: 6vh;
+    width: 55%;
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    cursor: pointer;
+    text-align: center;
+    max-width: 60%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 0 10px 10px 0;
+}
+
+#si-flat {
+    top: 9%;
+}
+
+#sol-sharp {
+    top: 22.5%;
+}
+
+#fa-sharp {
+    bottom: 52%;
+}
+
+#mi-flat {
+    bottom: 23.5%;
+}
+
+#do-sharp {
+    bottom: 9%;
+}
+
+/*окно результата*/
+
+.resultWindowForNote {
+    display: none;
+    align-items: center;
+}
+
+.correctNoteScore {
+    margin: 10dvh 5dvw 5dvh 5dvw;
+}
+
+.textForResult {
+    font-size: clamp(2rem, 7vw, 3rem);
+}
+
+/*Окно общего результата*/
+
+#window5ForFullResult {
+    display: none;
+}
+
+#fullResult {
+    border: 8px solid var(--colorForText);
+    color: #f6be05;
+    border-radius: 5px;
+    padding: 10%;
+}
+
+@media  (orientation: landscape) and (pointer: coarse) {
+    #window1ForStart {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3vh;
+    }
+
+    #welcome-containerp {
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    .containerh1 {
+        grid-row: span 4;
+    }
+
+    #welcome-containerh1 {
+        font-size: clamp(1rem, 20vh, 30rem);
+    }
+
+    #welcome-containerp {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    #noteA {
+        width: 7vh;
+        height: 7vh;
+    }
+
+    #counter {
+        width: 15vw;
+        height: 10vh;
+        transform: none;
+        writing-mode: horizontal-tb;
+    }
+
+    #counter::-webkit-slider-thumb {
+        width: 5vh;
+        height: 5vh;
+    }
+
+    #counter::-moz-range-thumb {
+        width: 5vh;
+        height: 5vh;
+    }
+
+
+    #counter::-webkit-slider-runnable-track {
+        border-radius: 5vw;
+    }
+
+    #counter::-moz-range-track {
+        border-radius: 5vw;
+    }
+
+
+    #start-btn {
+        margin: 0 auto;
+        margin-left: 10%;
+    }
+
+    #noteALabel {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    #counter-label {
+        font-size: clamp(0.5rem, 3.5vh, 20rem);
+    }
+
+    #unselectedNote {
+        width: 40%;
+    }
+
+    #fortepiano {
+        display: flex;
+        flex-direction: row-reverse;
+        align-self: center;
+        width: 80%;
+        height: 60vh
+    }
+
+    .white-btn{
+        height: 100%;
+        width: 14.28%;
+        padding: 0;
+        border-radius: 0 0 10px 10px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 3vh;
+    }
+
+    .black-btn {
+        height: 55%;
+        width: 12.28%;
+        top: auto;
+        bottom: auto;
+        border-radius: 0 0 10px 10px;
+    }
+
+    #si-flat {
+        top: 0;
+        right: 8.1%;
+    }
+
+    #sol-sharp {
+        top: 0;
+        right: 22%;
+    }
+
+    #fa-sharp {
+        top: 0;
+        right: 36.7%;
+    }
+
+    #mi-flat {
+        top: 0;
+        left: 22.5%;
+    }
+
+    #do-sharp {
+        top: 0;
+        left: 8.1%;
+    }
+
+    .buttonForContine {
+        margin: 0;
+        height: 10vh;
+        font-size: 3vh;
+        grid-column: span 2;
+    }
+
+    .resultWindowForNote {
+        display: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3vh;
+    }
+
+    .correctNoteScore {
+        font-size: clamp(2rem, 5vw, 6rem);
+    }
+
+    .textForResult {
+        max-width: 55vh;
+        margin: 12vh auto 0 auto;
+        font-size: clamp(0.5rem, 5vw, 3.5rem);
+    } 
+
+    .restartBNT {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) { 
+    #window1ForStart {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3dvh;
+    }
+
+    #welcome-containerp {
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    #welcome-containerh1 {
+        font-size: clamp(1rem, 20dvh, 30rem);
+        grid-row: span 4;
+    }
+
+    #welcome-containerp {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    #counter::-webkit-slider-thumb {
+        width: 5dvh;
+        height: 5dvh;
+    }
+
+    #counter::-moz-range-thumb {
+        width: 5dvh;
+        height: 5dvh;
+    }
+
+    #counter {
+        width: 5dvw;
+        height: 20dvh;
+    }
+
+    #start-btn {
+        margin: 0;
+        margin-left: 10%;
+    }
+
+    #noteALabel {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    #counter-label {
+        font-size: clamp(0.5rem, 3.5dvh, 20rem);
+    }
+
+    #unselectedNote {
+        width: 40%;
+    }
+
+    #fortepiano {
+        display: flex;
+        flex-direction: row-reverse;
+        align-self: center;
+        width: 80%;
+        height: 60dvh
+    }
+
+    .white-btn{
+        height: 100%;
+        width: 14.28%;
+        padding: 0;
+        border-radius: 0 0 10px 10px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 3dvh;
+    }
+
+    .black-btn {
+        height: 55%;
+        width: 12.28%;
+        top: auto;
+        bottom: auto;
+        border-radius: 0 0 10px 10px;
+    }
+
+    #si-flat {
+        top: 0;
+        right: 8.1%;
+    }
+
+    #sol-sharp {
+        top: 0;
+        right: 22%;
+    }
+
+    #fa-sharp {
+        top: 0;
+        right: 36.7%;
+    }
+
+    #mi-flat {
+        top: 0;
+        left: 22.5%;
+    }
+
+    #do-sharp {
+        top: 0;
+        left: 8.1%;
+    }
+
+    .buttonForContine {
+        margin: 0;
+    }
+
+    .resultWindowForNote {
+        display: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3dvh;
+    }
+
+    .textForResult {
+        max-width: 55vh;
+        margin: 12vh auto 0 auto;
+        font-size: clamp(0.5rem, 5vw, 3.5rem);
+    } 
+
+    .restartBNT {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+}

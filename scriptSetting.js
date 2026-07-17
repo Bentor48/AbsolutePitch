@@ -36,7 +36,7 @@ const logo = document.getElementById('logo');
 
 function forLightColor () {
     document.documentElement.setAttribute('data-theme', 'light');
-    logo.src = 'image/LogoAPDark.svg';
+    logo.src = '/image/LogoAPDark.svg';
 }
 
 if(localStorage.getItem('theme') === 'light') {
@@ -49,7 +49,7 @@ themeBTN.addEventListener('click', () => {
     if (activeTheme) {
         themeBTN.innerHTML = logoSVGForSettings.moon;
         document.documentElement.setAttribute('data-theme', 'dark');
-        logo.src = 'image/LogoAPLight.svg';
+        logo.src = '/image/LogoAPLight.svg';
     } else {
         themeBTN.innerHTML = logoSVGForSettings.sun;
         forLightColor ()
@@ -81,7 +81,7 @@ if (!languageUser) {
 
 const languageBTN = document.getElementById('language');
 const dialog = document.getElementById("languageDialog");
-const languageButtons = document.querySelectorAll(".languageButton");
+window.languageButtons = document.querySelectorAll(".languageButton");
 
 languageButtons.forEach(button => {
     button.addEventListener("click", () => {

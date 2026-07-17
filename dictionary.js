@@ -19,6 +19,33 @@ window.footerText = {
     }
 }
 
+window.dictionaryHomePage = {
+    ru: {
+        h1Home: `Развивайте музыкальный слух`,
+        pHome: `На этом сайте вы сможете тренировать и развивать музыкальный слух. Выполняйте представленные упражнения, подробнее об их назначениях и о видах слуха вы можете узнать в справке.`,
+        btn1: `Ноты`,
+        btn2: `Интервалы`,
+        btn3: `Трезвучия`,
+        btn4: `Лады`
+    },
+    uk: {
+        h1Home: `Розвивайте музичний слух`,
+        pHome: `На цьому сайті ви зможете тренувати та розвивати музичний слух. Виконуйте представлені вправи, докладніше про їх призначення та види слуху ви можете дізнатися у довідці.`,
+        btn1: `Ноти`,
+        btn2: `Інтервали`,
+        btn3: `Тризвук`,
+        btn4: `Лади`
+    },
+    en: {
+        h1Home: `Develop your musical ear`,
+        pHome: `On this website, you can train and develop your musical ear. Follow the exercises provided; you can learn more about their purpose and the different types of hearing in the help section.`,
+        btn1: `Notes`,
+        btn2: `Intervals`,
+        btn3: `Triads`,
+        btn4: `Musical Modes`
+    }
+}
+
 window.dictionaryGuessNote = {
     ru: {
         title: `Угадай ноту`,
