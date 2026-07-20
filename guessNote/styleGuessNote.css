@@ -431,7 +431,7 @@
 
 }
 
-@media only screen and (min-width: 1024px) { 
+@media only screen and (min-width: 720px) and (pointer: fine) { 
     #window1ForStart {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
