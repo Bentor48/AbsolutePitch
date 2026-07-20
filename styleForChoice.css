@@ -23,11 +23,11 @@
     text-align: center;
 }
 
-.hrHomePage {
+#hrHomePage {
     width: 80vw;
     height: 2px;
     border: none;
-    background-color: white;
+    background-color: var(--colorForText);
 }
 
 #titelText h2 {
@@ -117,7 +117,7 @@
     .btn-menu {
         height: 20vh;
         font-size: 1.8rem;
-        margin: 0 1rem 0 1rem;
+        padding: 0 1rem;
     }
 }
 
@@ -134,7 +134,7 @@
         font-size: 2rem;
     }
 
-    .hrHomePage {
+    #hrHomePage {
         height: 5px;
         border-radius: 2px;
     }
