@@ -27,7 +27,7 @@
     width: 80vw;
     height: 2px;
     border: none;
-    background-color: var(--colorForText);
+    background-color: white;
 }
 
 #titelText h2 {
