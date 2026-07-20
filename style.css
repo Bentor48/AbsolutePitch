@@ -47,10 +47,6 @@ body {
     color: var(--colorForText);
 }
 
-.no-scroll {
-    overflow: hidden;
-}
-
 header {
     margin-top: 2dvh;
     height: 5dvh;
@@ -86,8 +82,8 @@ header a {
     width: 6dvh;
     border-radius: 50%;
     cursor: pointer;
-    background-color: var(--black);
-    border: 1px solid var(--white);
+    background-color: var(--background);
+    border: 3px solid var(--white);
     color: var(--white);
     font-size: 1.4rem;
     align-items: center;
@@ -95,14 +91,29 @@ header a {
     transition: transform 0.2s ease;
 }
 
-.setBTN:hover {
+[data-theme="light"] .setBTN {
     background-color: var(--background);
+    color: var(--black);
+    border-color: var(--black);
+}
+
+.setBTN:hover {
+    background-color: var(--black);
+    transform: scale(1.1);
+}
+
+.setBTN:active {
+    background-color: var(--black);
     transform: scale(1.1);
 }
 
 [data-theme="light"] .setBTN:hover{
-    color: var(--black);
-    border-color: var(--black);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+[data-theme="light"] .setBTN:active{
+    color: var(--white);
     transform: scale(1.05);
 }
 
@@ -223,7 +234,7 @@ footer {
     }
 }
 
-@media only screen and (min-width: 1024px) { 
+@media only screen and (min-width: 720px) { 
     header {
         margin-top: 1dvw;
         height: 3dvw;

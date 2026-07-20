@@ -21,24 +21,24 @@ window.footerText = {
 
 window.dictionaryHomePage = {
     ru: {
-        h1Home: `Развивайте музыкальный слух`,
-        pHome: `На этом сайте вы сможете тренировать и развивать музыкальный слух. Выполняйте представленные упражнения, подробнее об их назначениях и о видах слуха вы можете узнать в справке.`,
+        h2Home: `Развивайте музыкальный слух`,
+        pHome: `Используйте тренажёр для развития абсолютного слуха. Улучшайте навыки распознования нот с помощью интервалов, трезвучий, ладов... Подробнее можно узнать в <a id="linkForReference" href="#">справке</a>.`,
         btn1: `Ноты`,
         btn2: `Интервалы`,
         btn3: `Трезвучия`,
         btn4: `Лады`
     },
     uk: {
-        h1Home: `Розвивайте музичний слух`,
-        pHome: `На цьому сайті ви зможете тренувати та розвивати музичний слух. Виконуйте представлені вправи, докладніше про їх призначення та види слуху ви можете дізнатися у довідці.`,
+        h2Home: `Розвивайте музичний слух`,
+        pHome: `Використовуйте тренажер для розвитку абсолютного слуху. Покращуйте навички розпізнавання нот за допомогою інтервалів, тризвуків, ладів... Детальніше можна дізнатися у <a id="linkForReference" href="#">довідці</a>.`,
         btn1: `Ноти`,
         btn2: `Інтервали`,
         btn3: `Тризвук`,
         btn4: `Лади`
     },
     en: {
-        h1Home: `Develop your musical ear`,
-        pHome: `On this website, you can train and develop your musical ear. Follow the exercises provided; you can learn more about their purpose and the different types of hearing in the help section.`,
+        h2Home: `Develop your musical ear`,
+        pHome: `Use the trainer to develop your absolute pitch. Improve your note recognition skills with intervals, triads, modes, and more. Learn more in the <a id="linkForReference" href="#">help section</a>.`,
         btn1: `Notes`,
         btn2: `Intervals`,
         btn3: `Triads`,
