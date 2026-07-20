@@ -234,7 +234,7 @@ footer {
     }
 }
 
-@media only screen and (min-width: 720px) { 
+@media only screen and (min-width: 720px) and (pointer: fine) { 
     header {
         margin-top: 1dvw;
         height: 3dvw;
