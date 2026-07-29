@@ -22,7 +22,7 @@ window.footerText = {
 window.dictionaryHomePage = {
     ru: {
         h2Home: `Развивайте музыкальный слух`,
-        pHome: `Используйте тренажёр для развития абсолютного слуха. Улучшайте навыки распознования нот с помощью интервалов, трезвучий, ладов... Подробнее можно узнать в <a id="linkForReference" href="#">справке</a>.`,
+        pHome: `Используйте тренажёр для развития абсолютного слуха. Улучшайте навыки распознования нот с помощью интервалов, трезвучий, ладов... Подробнее можно узнать в <a id="linkForReference" href="/reference/reference.html">справке</a>.`,
         btn1: `Ноты`,
         btn2: `Интервалы`,
         btn3: `Трезвучия`,
@@ -30,7 +30,7 @@ window.dictionaryHomePage = {
     },
     uk: {
         h2Home: `Розвивайте музичний слух`,
-        pHome: `Використовуйте тренажер для розвитку абсолютного слуху. Покращуйте навички розпізнавання нот за допомогою інтервалів, тризвуків, ладів... Детальніше можна дізнатися у <a id="linkForReference" href="#">довідці</a>.`,
+        pHome: `Використовуйте тренажер для розвитку абсолютного слуху. Покращуйте навички розпізнавання нот за допомогою інтервалів, тризвуків, ладів... Детальніше можна дізнатися у <a id="linkForReference" href="/reference/reference.html">довідці</a>.`,
         btn1: `Ноти`,
         btn2: `Інтервали`,
         btn3: `Тризвук`,
@@ -38,7 +38,7 @@ window.dictionaryHomePage = {
     },
     en: {
         h2Home: `Develop your musical ear`,
-        pHome: `Use the trainer to develop your absolute pitch. Improve your note recognition skills with intervals, triads, modes, and more. Learn more in the <a id="linkForReference" href="#">help section</a>.`,
+        pHome: `Use the trainer to develop your absolute pitch. Improve your note recognition skills with intervals, triads, modes, and more. Learn more in the <a id="linkForReference" href="/reference/reference.html">help section</a>.`,
         btn1: `Notes`,
         btn2: `Intervals`,
         btn3: `Triads`,
