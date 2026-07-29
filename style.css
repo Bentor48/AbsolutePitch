@@ -5,8 +5,9 @@
 }
 
 :root {
-    --colorForSlider: rgb(255, 255, 255);
+    --colorForSliderThumb: rgb(255, 255, 255);
     --colorForSliderStep: rgb(220, 220, 220);
+    --colorForSliderTrack: rgba(220, 220, 220, 0.598);
     --white: rgba(255, 255, 255, 0.8);
     --colorForText: rgba(255, 255, 255, 0.8);
     --whiteForFocus: rgba(255, 255, 255, 0.600);
@@ -19,8 +20,9 @@
 }
 
 [data-theme="light"] {
-    --colorForSlider: rgb(0, 0, 0);
-    --colorForSliderStep: rgb(0, 0, 0);
+    --colorForSliderThumb: rgb(0, 0, 0);
+    --colorForSliderStep: rgb(30, 30, 30);
+    --colorForSliderTrack: rgb(80, 80, 80);
     --white: rgba(255, 255, 255, 0.8);
     --colorForText: rgba(0, 0, 0, 0.883);
     --whiteForFocus: rgba(94, 94, 94, 0.757);
