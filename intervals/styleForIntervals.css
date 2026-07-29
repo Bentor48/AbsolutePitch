@@ -10,6 +10,7 @@
     height: 60vh;
     aspect-ratio: 1/1.5;
     position: relative;
+    min-height: 400px;
 }
 
 .slider-track {
@@ -19,7 +20,7 @@
     top: 5%;
     left: 11%;
     height: 90%;
-    border: 3px solid var(--colorForText);
+    background: var(--colorForSliderTrack);
 
     touch-action: none;
 }
@@ -29,8 +30,7 @@
     width: 22%;
     aspect-ratio: 4.5 / 1;
 
-    border: 3px solid var(--colorForSlider);
-    background: var(--colorForSlider);
+    background: var(--colorForSliderThumb);
 
     border-radius: 10px;
 
