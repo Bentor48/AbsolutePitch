@@ -7,8 +7,8 @@
 }
 
 #conteinerSlider {
-    height: 50vh;
-    aspect-ratio: 1/2;
+    height: 60vh;
+    aspect-ratio: 1/1.5;
     position: relative;
 }
 
@@ -17,7 +17,7 @@
     aspect-ratio: 1/25;
     cursor: pointer;
     top: 5%;
-    left: 10%;
+    left: 11%;
     height: 90%;
     border: 3px solid var(--colorForText);
 
@@ -26,7 +26,7 @@
 
 .slider-thumb {
     position: absolute;
-    width: 25%;
+    width: 22%;
     aspect-ratio: 4.5 / 1;
 
     border: 3px solid var(--colorForSlider);
@@ -35,7 +35,7 @@
     border-radius: 10px;
 
     top: 94%;
-    left: 1%;
+    left: 2.6%;
     z-index: 999;
     cursor: grab;
 
@@ -52,7 +52,7 @@
 }
 
 #p12t {
-    top: 7.7%;
+    top: 7.4%;
 }
 
 #p11t {
