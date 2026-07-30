@@ -47,13 +47,6 @@ function updateStepPositions() {
 
 updateStepPositions();
 
-// обновление при повороте страницы
-
-window.addEventListener("resize", () => {
-    fontSizeInterval();
-    updateStepPositions();
-});
-
 console.log(stepPositions);
 
 // выбранный интервал
@@ -110,4 +103,17 @@ sliderThumb.addEventListener("pointerup", (event) => {
 sliderThumb.addEventListener("pointercancel", () => {
     document.body.style.overflow = "auto";
     activePointer = null;
+});
+
+// обновление при повороте страницы
+
+window.addEventListener("resize", () => {
+    fontSizeInterval();
+    updateStepPositions();
+
+    intervalValue = 1;
+
+    const thumbHalf = sliderThumb.offsetHeight / 2;
+
+    sliderThumb.style.top = `${sliderTrack.offsetTop + stepPositions[0].position - thumbHalf}px`;  
 });
