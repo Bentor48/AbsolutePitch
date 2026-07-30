@@ -22,6 +22,8 @@ let activePointer = null;
 // массив координат
 
 const steps = document.querySelectorAll(".step.right");
+const stepsAll = document.querySelectorAll(".step");
+
 let stepPositions = [];
 let minY;
 let maxY;
@@ -103,6 +105,20 @@ sliderThumb.addEventListener("pointerup", (event) => {
 sliderThumb.addEventListener("pointercancel", () => {
     document.body.style.overflow = "auto";
     activePointer = null;
+});
+
+// перемещение по нажатию
+
+stepsAll.forEach((step, index) => {
+    step.addEventListener("click", () => {
+
+        const thumbHalf = sliderThumb.offsetHeight / 2;
+
+        sliderThumb.style.top =
+            `${sliderTrack.offsetTop + stepPositions[Math.floor(index / 2)].position - thumbHalf}px`;
+
+        intervalValue = stepPositions[Math.floor(index / 2)].value;
+    });
 });
 
 // обновление при повороте страницы
