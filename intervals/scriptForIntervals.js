@@ -8,40 +8,50 @@ function fontSizeText(text) {
         text = [text];
     }
 
-    let smallText = parseFloat(getComputedStyle(text[0]).fontSize);
+    let smallestSize = Infinity;
+
     text.forEach((element) => {
-        let size = parseFloat(getComputedStyle(element).fontSize);
+        let left = 8;
+        let right = parseFloat(getComputedStyle(element).fontSize);
+        let best = left;
 
-        while (size > 8) {
-            element.style.fontSize = size + "px";
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
 
-            if(element.scrollWidth <= element.parentElement.clientWidth && element.scrollHeight <= element.parentElement.clientHeight) {
+            element.style.fontSize = mid + "px";
 
-                break
+            const first = element.scrollWidth <= element.parentElement.clientWidth &&
+            element.scrollHeight <= element.parentElement.scrollHeight;
+
+            if (first) {
+                best = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
-
-            size--;
         }
 
-        if(size < smallText) {
-            smallText = size;
-        }
-    })
+        element.style.fontSize = best + 'px';
+        smallestSize = Math.min(smallestSize, best);
+    });
 
     text.forEach((element) => {
-        element.style.fontSize = smallText + 'px';
-    })
+        element.style.fontSize = smallestSize + 'px';
+    });
 }
 
 //h1 страниц
 const h1Window1 = document.getElementById('titel1');
 const h1Window2 = document.getElementById('titel2');
 
-// выбор типа интервалов
 // окно 1
 let startBTNmh = document.querySelectorAll('.startBTNmh');
 const startBtnText = document.querySelectorAll('.btn-text-MG');
 
+// окно 2 старт кнопка текст
+const startBtnText2_3 = document.getElementById('start-btn-text');
+
+// выбор типа интервалов
 let typeInterval;
 
 fontSizeText(h1Window1);
@@ -53,13 +63,16 @@ startBTNmh.forEach((button) => {
         windowIntervals1.style.display = 'none';
         windowIntervals2.style.display = 'flex';
 
+        // предварительная обработка размеров окно2
         updateStepsPositionsTime();
         updatePositionThumb();
         fontSizeText(h1Window2);
+        fontSizeText(startBtnText2_3);
     })
 });
 
 // окно 2
+
 // Полтзунок для измиенения времени интервала
 // Время по умолчанию
 let time
@@ -69,7 +82,6 @@ if(!localStorage.getItem("time")) {
     time = Number(localStorage.getItem("time"))
 }
  
-
 let activePointerTime = null;
 
 const stepsTime = document.querySelectorAll(".stepTime.rightTime");
@@ -310,6 +322,7 @@ window.addEventListener("resize", () => {
         updateStepsPositionsTime();
         updatePositionThumb();
         fontSizeText(h1Window2);
+        fontSizeText(startBtnText2_3);
     }
 
     fontSizeInterval();
