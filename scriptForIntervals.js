@@ -1,5 +1,188 @@
-// Высота шрифта ползунка
+// Сменяющиеся окна
+const windowIntervals1 = document.getElementById('windowIntervals1');
+const windowIntervals2 = document.getElementById('windowIntervals2');
 
+//Размер шрифта
+function fontSizeText(text) {
+    if (!NodeList.prototype.isPrototypeOf(text) && !Array.isArray(text)) {
+        text = [text];
+    }
+
+    let smallestSize = Infinity;
+
+    text.forEach((element) => {
+        let left = 8;
+        let right = parseFloat(getComputedStyle(element).fontSize);
+        let best = left;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+
+            element.style.fontSize = mid + "px";
+
+            const first = element.scrollWidth <= element.parentElement.clientWidth &&
+            element.scrollHeight <= element.parentElement.scrollHeight;
+
+            if (first) {
+                best = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        element.style.fontSize = best + 'px';
+        smallestSize = Math.min(smallestSize, best);
+    });
+
+    text.forEach((element) => {
+        element.style.fontSize = smallestSize + 'px';
+    });
+}
+
+//h1 страниц
+const h1Window1 = document.getElementById('titel1');
+const h1Window2 = document.getElementById('titel2');
+
+// выбор типа интервалов
+// окно 1
+let startBTNmh = document.querySelectorAll('.startBTNmh');
+const startBtnText = document.querySelectorAll('.btn-text-MG');
+
+let typeInterval;
+
+fontSizeText(h1Window1);
+fontSizeText(startBtnText);
+
+startBTNmh.forEach((button) => {
+    button.addEventListener('click', () => {
+        typeInterval = button.id;
+        windowIntervals1.style.display = 'none';
+        windowIntervals2.style.display = 'flex';
+
+        updateStepsPositionsTime();
+        updatePositionThumb();
+        fontSizeText(h1Window2);
+    })
+});
+
+// окно 2
+// Полтзунок для измиенения времени интервала
+// Время по умолчанию
+let time
+if(!localStorage.getItem("time")) {
+    time = 2000;
+} else {
+    time = Number(localStorage.getItem("time"))
+}
+ 
+
+let activePointerTime = null;
+
+const stepsTime = document.querySelectorAll(".stepTime.rightTime");
+const stepsAllTime = document.querySelectorAll(".stepTime");
+
+const sliderTrackTime = document.getElementById('sliderTrackTime');
+const sliderThumbTime = document.getElementById('sliderThumbTime');
+const sliderTrackTimeFill = document.getElementById('sliderTrackTimeFill');
+
+const valueTimeText = document.getElementById('valueTimeText');
+
+let stepsPositionsTime = [];
+
+let minYTime;
+let maxYTime;
+
+// Создать массив позиций для времени
+function updateStepsPositionsTime() {
+    stepsPositionsTime = [];
+
+    trackTimeRect = sliderTrackTime.getBoundingClientRect();
+
+    stepsTime.forEach((step) => {
+        rectTime = step.getBoundingClientRect();
+
+        stepsPositionsTime.push({
+            value: Number(step.dataset.value),
+            position: rectTime.top + rectTime.height / 2 - trackTimeRect.top
+        })
+    })
+
+    const positionsTime = stepsPositionsTime.map(step => step.position);
+    minYTime = Math.min(...positionsTime);
+    maxYTime = Math.max(...positionsTime);
+}
+
+// выставить начальную позицию времени относительно памяти 
+function updatePositionThumb() {
+    for (const char of stepsPositionsTime) {
+        if(char.value === time) {
+            sliderThumbTime.style.top = `${char.position - sliderThumbTime.offsetHeight / 2}px`;
+            valueTimeText.innerText = String(char.value)[0];
+            return
+        }
+    }
+}
+
+// определить палец
+sliderThumbTime.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+
+    activePointerTime = event.pointerId;
+    sliderThumbTime.setPointerCapture(event.pointerId);
+});
+
+// скрипт для измениния позиции ходунка
+sliderThumbTime.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== activePointerTime) return;
+
+    if(event.pointerType === "touch" || event.pointerType === "pen") document.body.style.overflow = 'hidden';
+
+    let y = event.clientY - sliderTrackTime.getBoundingClientRect().top;
+    const thumbHalfTime = sliderThumbTime.offsetHeight / 2;
+
+    y = Math.max(minYTime, Math.min(y, maxYTime));
+
+    let nearestPosition = stepsPositionsTime[0];
+    let minDistance = Math.abs(y - nearestPosition.position);
+
+    stepsPositionsTime.forEach((position) => {
+        const distance = Math.abs(y - position.position);
+
+        if(distance < minDistance) {
+            minDistance = distance;
+            nearestPosition = position;
+        }
+    })
+
+    time = nearestPosition.value;
+    console.log(time);
+    valueTimeText.innerText = String(time)[0];
+
+    sliderThumbTime.style.top = `${nearestPosition.position - thumbHalfTime}px`;
+})
+
+sliderThumbTime.addEventListener("pointerup", (event) => {
+    if(event.pointerType === "touch" || event.pointerType === "pen") {
+        document.body.style.overflow = 'auto';
+    }
+
+    sliderThumbTime.releasePointerCapture(event.pointerId);
+    activePointerTime = null;
+});
+
+sliderThumbTime.addEventListener("pointercancel", () => {
+    document.body.style.overflow = "auto";
+    activePointerTime = null;
+});
+
+const startBTN = document.getElementById('start-btn');
+startBTN.addEventListener('click', () => {
+    localStorage.setItem("time", time);
+})
+
+// ползунок для выбобора интервалов
+// Высота шрифта ползунка для интервалов
 const containerSlider = document.getElementById('conteinerSlider');
 const pIntervalsName = document.querySelectorAll('.pIntervalsName');
 
@@ -11,17 +194,19 @@ function fontSizeInterval() {
 
 fontSizeInterval();
 
-// Скрипт ползунка
+// Скрипт ползунка для интервалов
 
 const sliderTrack = document.getElementById('sliderTrack');
 const sliderThumb = document.getElementById('sliderThumb');
 
-// Активный указатель
+// Активный указатель интервалов
 let activePointer = null;
 
-// массив координат
+// массив координат интервалов
 
 const steps = document.querySelectorAll(".step.right");
+const stepsAll = document.querySelectorAll(".step");
+
 let stepPositions = [];
 let minY;
 let maxY;
@@ -52,7 +237,7 @@ console.log(stepPositions);
 // выбранный интервал
 let intervalValue = 1;
 
-// скрипт ползунка
+// скрипт ползунка интервалов
 
 sliderThumb.addEventListener("pointerdown", (event) => {
     event.preventDefault();
@@ -67,6 +252,7 @@ sliderThumb.addEventListener("pointermove", (event) => {
     if(event.pointerType === "touch" || event.pointerType === "pen") {
         document.body.style.overflow = 'hidden';
     }
+
     const rect = sliderTrack.getBoundingClientRect();
     let y = event.clientY - rect.top;
     const thumbHalf = sliderThumb.offsetHeight / 2;
@@ -105,11 +291,40 @@ sliderThumb.addEventListener("pointercancel", () => {
     activePointer = null;
 });
 
+// перемещение по нажатию интервалов
+
+stepsAll.forEach((step, index) => {
+    step.addEventListener("click", () => {
+
+        const thumbHalf = sliderThumb.offsetHeight / 2;
+
+        sliderThumb.style.top =
+            `${sliderTrack.offsetTop + stepPositions[Math.floor(index / 2)].position - thumbHalf}px`;
+
+        intervalValue = stepPositions[Math.floor(index / 2)].value;
+    });
+});
+
 // обновление при повороте страницы
 
 window.addEventListener("resize", () => {
+    if(getComputedStyle(windowIntervals1).display !== 'none') {
+        fontSizeText(h1Window1);
+        fontSizeText(startBtnText);
+    }
+
+    if(getComputedStyle(windowIntervals2).display !== 'none') {
+        updateStepsPositionsTime();
+        updatePositionThumb();
+        fontSizeText(h1Window2);
+    }
+
     fontSizeInterval();
     updateStepPositions();
-    sliderThumb.style.top = "";
+
     intervalValue = 1;
+
+    const thumbHalf = sliderThumb.offsetHeight / 2;
+
+    sliderThumb.style.top = `${sliderTrack.offsetTop + stepPositions[0].position - thumbHalf}px`;  
 });
