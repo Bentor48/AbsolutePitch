@@ -2,9 +2,45 @@
 const windowIntervals1 = document.getElementById('windowIntervals1');
 const windowIntervals2 = document.getElementById('windowIntervals2');
 
+//Размер шрифта
+function fontSizeText(text) {
+    if (!NodeList.prototype.isPrototypeOf(text) && !Array.isArray(text)) {
+        text = [text];
+    }
+
+    let smallText = parseFloat(getComputedStyle(text[0]).fontSize);
+    text.forEach((element) => {
+        let size = parseFloat(getComputedStyle(element).fontSize);
+
+        while (
+            (element.scrollWidth > element.clientWidth ||
+            element.scrollHeight > element.clientHeight) &&
+            size > 8
+        ) {
+            size--;
+            element.style.fontSize = size + "px";
+        }
+
+        if(size < smallText) {
+            smallText = size;
+        }
+    })
+
+    text.forEach((element) => {
+        element.style.fontSize = smallText + 'px';
+    })
+}
+
+//h1 страниц
+const h1Window1 = document.getElementById('titel1');
+const h1Window2 = document.getElementById('titel2');
+
 // выбор типа интервалов
 let startBTNmh = document.querySelectorAll('.startBTNmh');
 let typeInterval;
+
+fontSizeText(h1Window1);
+fontSizeText(startBTNmh);
 
 startBTNmh.forEach((button) => {
     button.addEventListener('click', () => {
@@ -14,6 +50,7 @@ startBTNmh.forEach((button) => {
 
         updateStepsPositionsTime();
         updatePositionThumb();
+        fontSizeText(h1Window2);
     })
 });
 
