@@ -39,10 +39,12 @@ const h1Window2 = document.getElementById('titel2');
 
 // выбор типа интервалов
 let startBTNmh = document.querySelectorAll('.startBTNmh');
+const startBtnText = document.querySelectorAll('.btn-text');
+
 let typeInterval;
 
 fontSizeText(h1Window1);
-fontSizeText(startBTNmh);
+fontSizeText(startBtnText);
 
 startBTNmh.forEach((button) => {
     button.addEventListener('click', () => {
