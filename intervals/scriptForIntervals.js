@@ -12,13 +12,15 @@ function fontSizeText(text) {
     text.forEach((element) => {
         let size = parseFloat(getComputedStyle(element).fontSize);
 
-        while (
-            (element.scrollWidth > element.clientWidth ||
-            element.scrollHeight > element.clientHeight) &&
-            size > 8
-        ) {
-            size--;
+        while (size > 8) {
             element.style.fontSize = size + "px";
+
+            if(element.scrollWidth <= element.parentElement.clientWidth && element.scrollHeight <= element.parentElement.clientHeight) {
+
+                break
+            }
+
+            size--;
         }
 
         if(size < smallText) {
