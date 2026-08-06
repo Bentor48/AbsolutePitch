@@ -270,7 +270,7 @@
 
 #fullResult {
     border: 8px solid var(--colorForText);
-    color: #f6be05;
+    color: var(--winColor);
     border-radius: 5px;
     padding: 10%;
 }

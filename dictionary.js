@@ -111,6 +111,102 @@ window.fortepianoNotes = {
     uk: ['До', 'До#/Ре♭', 'Ре', 'Ре#/Мі♭', 'Мі', 'Фа', 'Фа#/Соль♭', 'Соль', 'Соль#/Ля♭', 'Ля', 'Ля#/Сі♭', 'Сі']
 };
 
+window.intervals = {
+    en: {
+        titel1: `Intervals`,
+        pInterva1: {
+            mel: `In this exercise, the notes will sound one after another.`,
+            garm: `In this exercise the sounds are played as a chord`
+        },
+        pInterval2: `You can answer immediately and earn <span class="stylePoints">10 points</span>, or use hints. Each correct answer after using a hint earns <span class="stylePoints">2 points</span>.`,
+        time: `Interval duration:`,
+        s: `s`,
+
+        intervalsBTN: {
+            mel: `Melodic</br>(one note after another)`,
+            garm: `Harmonic</br>(chord)`,
+        },
+
+        sliderIntervals: [
+            'Unison',
+            'Minor Second',
+            'Major Second',
+            'Minor Third',
+            'Major Third',
+            'Perfect Fourth',
+            'Tritone',
+            'Perfect Fifth',
+            'Minor Sixth',
+            'Major Sixth',
+            'Minor Seventh',
+            'Major Seventh',
+            'Octave'
+        ]
+    },
+    ru: {
+        titel1: `Интервалы`,
+        pInterva1: {
+            mel: `В этом упражнении звуки будут звучать один за другим.`,
+            garm: `В этом упражнении звуки будут звучать аккордом.`
+        },
+        pInterval2: `Вы можете ответить сразу и получить <span class="stylePoints">10 баллов</span>, либо отвечать, используя наводящие вопросы. За каждый правильный ответ на наводящий вопрос вы получите <span class="stylePoints">2 балла</span>.`,
+        time: `Длительность интервала:`,
+        s: `сек`,
+
+        intervalsBTN: {
+            mel: `Мелодические</br>(один звук за другим)`,
+            garm: `Гармонические</br>(аккродом)`
+        },
+
+        sliderIntervals: [
+            'Прима',
+            'Малая секунда',
+            'Большая секунда',
+            'Малая терция',
+            'Большая терция',
+            'Кварта',
+            'Тритон',
+            'Квинта',
+            'Малая секста',
+            'Большая секста',
+            'Малая септима',
+            'Большая септима',
+            'Октава'
+        ]
+    },
+    uk: {
+        titel1: `Інтервали`,
+        pInterva1: {
+            mel: `У цій вправі звуки звучатимуть один за одним.`,
+            garm: `У цій вправі звуки звучатимуть акордом.`
+        },
+        pInterval2: `Ви можете відповісти одразу й отримати <span class="stylePoints">10 балів</span>, або відповідати, використовуючи навідні запитання. За кожну правильну відповідь на навідне запитання ви отримаєте <span class="stylePoints">2 бали</span>.`,
+        time: `Тривалість інтервалу:`,
+        s: `сек`,
+
+        intervalsBTN: {
+            mel: `Мелодичні</br>(один звук за іншим)`,
+            garm: `Гармонічні</br>(акордом)`
+        },
+
+        sliderIntervals: [
+            'Прима',
+            'Мала секунда',
+            'Велика секунда',
+            'Мала терція',
+            'Велика терція',
+            'Кварта',
+            'Тритон',
+            'Квінта',
+            'Мала секста',
+            'Велика секста',
+            'Мала септима',
+            'Велика септима',
+            'Октава'
+        ]
+    }
+};
+
 // Массив фраз Должно быть всегда одинаковое количество фраз
 window.successMessages = {
     ru: [

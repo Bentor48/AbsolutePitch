@@ -24,6 +24,48 @@
     <main>
         <div id="settings-container"></div>
 
+        <div id="windowIntervals1" class="styleConyainer">
+
+            <div class="styleConyainer titelText">
+                <h1 class="nameh1" id="titel1">Интервалы</h1>
+                <hr class="hrHomePage">
+            </div>
+
+            <div id="buttonInervalsChoice" class="styleConyainer conteinerBTN">
+                <button class="btn-menu startBTNmh" id="mel">Мелодические</br>(один звук за другим)</button>
+                <button class="btn-menu startBTNmh" id="garm">Гармонические</br>(аккродом)</button>
+            </div>
+        </div>
+
+        <div id="windowIntervals2" class="styleConyainer" >
+            <div class="styleConyainer titelText">
+                <h1 class="nameh1" id="titel2">Мелодические</br>интервалы</h1>
+                <hr class="hrHomePage">
+                <p class="namep" id="pInterval">В этом упражнении звуки будут звучать один за другим. Вы можете ответить сразу и получить <span class="stylePoints">10 баллов</span>, либо отвечать используя наводящие вопросы. За каждый правильный ответ, на наводящий вопрос вы получите <span class="stylePoints">2 балла</span>.</p>
+            </div>
+
+            <div id="conteinerIntervalTime">
+                <p id="intervalTimeValueText">Длительность интервала: <span id="valueTimeText">2</span> <span id="textSeconds">сек</span></p>
+                <div id="sliderTimeInterval">
+                    <div class="slider-trackTime" id="sliderTrackTime">
+                        <div class="slider-thumbTime" id="sliderThumbTime"></div>
+                        <div class="slider-trackTime-Fill" id="sliderTrackTimeFill"></div>
+
+                        <span class="stepTime leftTime p1Time" data-value="1000"></span>
+                        <span class="stepTime rightTime p1Time" data-value="1000"></span>
+                        <span class="stepTime leftTime p2Time" data-value="2000"></span>
+                        <span class="stepTime rightTime p2Time" data-value="2000"></span>
+                        <span class="stepTime leftTime p3Time" data-value="3000"></span>
+                        <span class="stepTime rightTime p3Time" data-value="3000"></span>
+                        <span class="stepTime leftTime p4Time" data-value="4000"></span>
+                        <span class="stepTime rightTime p4Time" data-value="4000"></span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-menu forContinue" id="start-btn">Начать</button>
+        </div>
+
         <div class="conteiner">
             <div id="conteinerSlider">
                 <div class="slider-track" id="sliderTrack"></div>

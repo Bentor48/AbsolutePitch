@@ -1,43 +1,5 @@
-#settings { 
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-
-
-.styleConyainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
-}
-
-#titelText {
-    min-height: 35vh;
-    width: 80%;
-}
-
-#titelText h1 {
-    font-size: 4rem;
-    margin: 1rem 0 1rem 0;
-    text-align: center;
-}
-
-#hrHomePage {
-    width: 80vw;
-    height: 2px;
-    border: none;
-    background-color: var(--colorForText);
-}
-
-#titelText h2 {
+.nameh2 {
     font-size: 2rem;
-    margin: 0;
-    text-align: center;
-}
-
-#titelText p {
-    font-size: 1.2rem;
     margin: 0;
     text-align: center;
 }
@@ -59,94 +21,8 @@
     color: var( --whiteForFocus);
 }
 
-#conteinerBTN {
-    min-height: 35vh;
-    width: 100%;
-}
-
-#pHome {
-    max-width: 80vw;
-}
-
-.btn-menu {
-    all: unset;
-    cursor: pointer;
-    width: 80%;
-    border: 2px solid var(--colorForText);
-    background-color: var(--background);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.3rem;
-    height: 7vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease;
-}
-
-.btn-menu:hover {
-    background-color: var(--forContinueBTN);
-    transform: scale(1.05);
-}
-
-.btn-menu:active {
-    background-color: var(--forContinueBTN);
-    transform: scale(1.05);
-}
-
-[data-theme="light"] .btn-menu:hover {
-    background-color: var(--black);
-    border-color: var(--black);
-    color: var(--background);
-    transform: scale(1.05);
-}
-
-[data-theme="light"] .btn-menu:active {
-    background-color: var(--black);
-    border-color: var(--black);
-    color: var(--background);
-    transform: scale(1.05);
-}
-
-@media  (orientation: landscape) and (pointer: coarse) {
-    #conteinerBTN {
-        flex-direction: row;
-        width: 80%;
-    }
-
-    .btn-menu {
-        height: 20vh;
-        font-size: 1.8rem;
-        padding: 0 1rem;
-    }
-}
-
 @media only screen and (min-width: 720px) and (pointer: fine) {
-    #titelText h1 {
-        font-size: 8rem;
-    }
-
-    #titelText h2 {
+    .nameh2 {
         font-size: 4rem;
-    }
-
-    #titelText p {
-        font-size: 2rem;
-    }
-
-    #hrHomePage {
-        height: 5px;
-        border-radius: 2px;
-    }
-
-    #conteinerBTN {
-        flex-direction: row;
-        width: 80%;
-        gap: 30px;
-    }
-
-    .btn-menu {
-        height: 20vh;
-        font-size: 3rem;
     }
 }
