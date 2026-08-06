@@ -38,8 +38,9 @@ const h1Window1 = document.getElementById('titel1');
 const h1Window2 = document.getElementById('titel2');
 
 // выбор типа интервалов
+// окно 1
 let startBTNmh = document.querySelectorAll('.startBTNmh');
-const startBtnText = document.querySelectorAll('.btn-text');
+const startBtnText = document.querySelectorAll('.btn-text-MG');
 
 let typeInterval;
 
@@ -58,6 +59,7 @@ startBTNmh.forEach((button) => {
     })
 });
 
+// окно 2
 // Полтзунок для измиенения времени интервала
 // Время по умолчанию
 let time
@@ -299,6 +301,17 @@ stepsAll.forEach((step, index) => {
 // обновление при повороте страницы
 
 window.addEventListener("resize", () => {
+    if(getComputedStyle(windowIntervals1).display !== 'none') {
+        fontSizeText(h1Window1);
+        fontSizeText(startBtnText);
+    }
+
+    if(getComputedStyle(windowIntervals2).display !== 'none') {
+        updateStepsPositionsTime();
+        updatePositionThumb();
+        fontSizeText(h1Window2);
+    }
+
     fontSizeInterval();
     updateStepPositions();
 
